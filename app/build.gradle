@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+	compileSdkVersion 26
+	defaultConfig {
+		applicationId "tests.joris.com.myapplication"
+		minSdkVersion 23
+		targetSdkVersion 26
+		versionCode 1
+		versionName "1.0"
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+		javaCompileOptions {
+			annotationProcessorOptions {
+				arguments = ['autovaluegson.defaultCollectionsToEmpty': 'true']
+			}
+		}
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+}
+
+dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation 'com.android.support:appcompat-v7:26.1.0'
+	implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+	implementation 'com.google.android.gms:play-services-maps:11.6.2'
+	implementation 'com.github.bumptech.glide:glide:4.3.1'
+	annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+	implementation 'com.hannesdorfmann.mosby3:mvp:3.1.0' // Plain MVP
+
+	compileOnly 'javax.annotation:jsr250-api:1.0'
+	implementation 'javax.inject:javax.inject:1'
+
+	compileOnly 'com.ryanharter.auto.value:auto-value-gson:0.6.0'
+	implementation 'com.google.code.gson:gson:2.8.1'
+	implementation 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.5'
+	annotationProcessor 'com.ryanharter.auto.value:auto-value-parcel:0.2.5'
+	annotationProcessor 'com.ryanharter.auto.value:auto-value-gson:0.6.0'
+
+	//networking
+	implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+	implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+	implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+	implementation 'io.reactivex:rxandroid:1.2.1'
+	implementation 'io.reactivex:rxjava:1.1.7'
+
+	debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+	implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+	implementation 'io.card:android-sdk:5.5.1'
+	implementation 'com.daimajia.easing:library:2.0@aar'
+	implementation 'com.daimajia.androidanimations:library:2.3@aar'
+	implementation "com.android.support:appcompat-v7:26.1.0"
+	implementation "com.android.support:design:26.1.0"
+	implementation "com.jakewharton:butterknife:8.7.0"
+	implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.2.0'
+	annotationProcessor "com.jakewharton:butterknife-compiler:8.7.0"
+
+	//appCenter
+	def appCenterSdkVersion = '1.4.0'
+	implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+	implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+	implementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+	implementation "com.microsoft.appcenter:appcenter-push:${appCenterSdkVersion}"
+
+}
