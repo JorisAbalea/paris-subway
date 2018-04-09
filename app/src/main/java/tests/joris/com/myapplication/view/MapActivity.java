@@ -3,7 +3,6 @@ package tests.joris.com.myapplication.view;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -35,8 +34,6 @@ import java.util.Map;
 
 public class MapActivity extends MvpActivity<MapView, MapPresenter> implements
 	MapView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-
-	private static final String TAG = "COUCOU";
 	public static final String PARIS_SUBWAY = "Paris Subway";
 	private Marker startNode = null;
 	private Marker endNode = null;
@@ -106,7 +103,6 @@ public class MapActivity extends MvpActivity<MapView, MapPresenter> implements
 
 	@Override
 	public void drawPath(Map<String, Stop> stops, String listOfStations, String distance) {
-		Log.e("TEST", "drawPathdrawPathdrawPathdrawPathdrawPath " + listOfStations);
 		try {
 			JSONArray jsonArray = new JSONArray(listOfStations);
 			int len = jsonArray.length();
